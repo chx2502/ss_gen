@@ -5,8 +5,7 @@ import hashlib
 import json
 import urllib
 import random
-  
-  
+
   
 def translate(content, src_lang, tar_lang):
     httpClient = http.client.HTTPConnection('api.fanyi.baidu.com')
