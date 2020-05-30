@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@621ac77e-809b-40c2-9541-4c3d07066098" />
+        <remote-mappings server-id="python@sftp://chx01@192.168.199.178:10022/home/chx01/anaconda3/envs/hanlp1.x/bin/python3.8">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/home/chx01/workplace/jupyter_projects/词替换相似句" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>

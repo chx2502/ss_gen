@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="chx01@192.168.199.178:10022" autoUploadExternalChanges="true">
+    <serverData>
+      <paths name="chx01@192.168.199.178:10022">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/chx01/workplace/jupyter_projects/词替换相似句" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
