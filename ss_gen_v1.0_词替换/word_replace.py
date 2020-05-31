@@ -3,6 +3,7 @@
 
 from segmentation import Dictionnary_Segmentation
 
+<<<<<<< Updated upstream
 
 def generate_similar_sentences(
         txtfile,
@@ -42,10 +43,25 @@ def generate_similar_sentences(
                 output_file.write("{}\t{}\t{}\n".format(original_sentence, similar_sentence, label))
                 if single_file_output:
                     single_sentence_output.write("{}\t{}\n".format(similar_sentence, label))
+=======
+def replace(original_sentence: str, DS: Dictionnary_Segmentation) -> list :
+
+    result = []
+    # 调用 Dictionnary_Segmentation 类中的 Generate_Similar_Sentences 方法实现 分词 + 同义词替换
+    similar_sentences_list = DS.generate_similar_sentences(original_sentence)
+    if len(similar_sentences_list) > 1:
+        for i in range(1, len(similar_sentences_list)):
+            similar_sentence = ''.join(similar_sentences_list[i])
+            result.append(similar_sentence)
+    else:
+        print("句子未命中同义词：{}".format(original_sentence))
+        result.append(original_sentence)
+>>>>>>> Stashed changes
 
     output_file.close()
 
 
+<<<<<<< Updated upstream
 if __name__ == "__main__":
     input_filename = 'input.txt'
     output_filename = 'input_wp.txt'
@@ -63,3 +79,12 @@ if __name__ == "__main__":
         output_filename
     )
 
+=======
+if __name__ == '__main__':
+    sentence = "车贷怎么还款"
+    Custom_Dictionary_File = './dictionary/Custom_Dictionary_v1.1.txt'  # 自定义词典
+    Similar_Dictionary_File = './dictionary/Similar_Dictionary_v1.1.txt'  # 相似问词典
+    DS = Dictionnary_Segmentation(Custom_Dictionary_File, Similar_Dictionary_File)
+    result = replace(sentence, DS)
+    print(result)
+>>>>>>> Stashed changes
