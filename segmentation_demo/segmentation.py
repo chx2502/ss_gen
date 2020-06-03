@@ -21,7 +21,8 @@ class Dictionnary_Segmentation():
             CustomDictionary.add(word.replace('\n', ''))
         return CustomDictionary
 
-
+    # 对存在同义词的 word 以 word 为 key 构造字典
+    # 建立同义词 word 到标准词(similar_dict_file 第一列)的字典映射
     def initialize_similar_dictionary(self, Similar_Dictionary_File):
         self.similar_dictionary = dict()
         similar_lines = open(Similar_Dictionary_File, 'r+', encoding='utf-8').readlines()
@@ -33,8 +34,7 @@ class Dictionnary_Segmentation():
 
     # 对存在同义词的 word 以 word 为 key 构造字典
     # 将整行相似词生成的 list 作为该行每个词的 value，以便替换
-    # 大部分过程与 initialize_similar_dictionary 重复，会导致读取两次同义词文件
-
+    # 大部分过程与 initialize_similar_dictionary 重复，会导致读取两次同义词词典文件
     def initialize_similar_vocabulary(self, Similar_Dictionary_File):
         self.similar_vocabulary = dict()
         similar_lines = open(Similar_Dictionary_File, 'r+', encoding='utf-8').readlines()
@@ -60,7 +60,7 @@ class Dictionnary_Segmentation():
         for keyword in keyword_lines:
             self.keywords.append(keyword.replace('\n', ''))
 
-
+    # 关键词筛选 + 标准词替换 + 分词
     def Query_CustomDictionary_Recognize(self, sentence_str):
         wordlist = HanLP.segment(sentence_str)
         line_after_recognize = ""
@@ -74,7 +74,7 @@ class Dictionnary_Segmentation():
                 line_after_recognize += similar_word
         return line_after_recognize
 
-
+    # 标准词替换 + 分词
     def CustomDictionary_Segmentation(self, sentence_str):
         word_list = []
         wordlist = HanLP.segment(sentence_str)
@@ -91,7 +91,7 @@ class Dictionnary_Segmentation():
     #         word_list.append(similar_list[0])
     #     return word_list
 
-
+    # 标准词替换
     def CustomDictionary_Recognize(self, sentence_str):
         wordlist = HanLP.segment(sentence_str)
         line_after_recognize = ""
@@ -99,7 +99,7 @@ class Dictionnary_Segmentation():
             line_after_recognize += self.similar_word(str(word).split('/')[-2])
         return line_after_recognize
 
-
+    # 直接分词
     def segmentation_without_replace(self, sentence_str):
         result = []
         wordlist = HanLP.segment(sentence_str)
@@ -108,7 +108,7 @@ class Dictionnary_Segmentation():
         return result
 
 
-
+    # 获取标准词
     def similar_word(self, word):
         if word in self.similar_dictionary:
             return self.similar_dictionary[word]
@@ -126,6 +126,7 @@ class Dictionnary_Segmentation():
     #     else:
     #         return list(word)
 
+    # 获取同义词列表
     def get_similar_vocabulary(self, word):
         if word in self.similar_vocabulary:
             return self.similar_vocabulary[word]

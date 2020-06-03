@@ -11,7 +11,7 @@ def replace(
     DS = Dictionnary_Segmentation(custom_dict_file, similar_dict_file)
     result = []
 
-    similar_sentences_list = DS.Generate_Similar_Sentences(original_sentence)
+    similar_sentences_list = DS.generate_similar_sentences(original_sentence)
     if len(similar_sentences_list) > 1:
         for i in range(1, len(similar_sentences_list)):
             similar_sentence = ''.join(similar_sentences_list[i])
